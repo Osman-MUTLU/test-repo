@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>Greeting demo</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #172033;
+        background: #f4f7fb;
+      }
+
+      body {
+        min-height: 100vh;
+        box-sizing: border-box;
+        display: grid;
+        place-items: center;
+        margin: 0;
+        padding: 1.5rem;
+      }
+
+      main {
+        width: min(100%, 30rem);
+        box-sizing: border-box;
+        padding: clamp(1.5rem, 6vw, 2.5rem);
+        border: 1px solid #dce3ed;
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 1rem 2.5rem rgb(23 32 51 / 8%);
+      }
+
+      h1 { margin-top: 0; }
+      p { line-height: 1.55; color: #536078; }
+      form { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+      label { font-weight: 650; }
+      input, button { font: inherit; border-radius: 0.5rem; }
+      input { min-width: 0; padding: 0.75rem; border: 1px solid #aeb9ca; }
+      input:focus-visible, button:focus-visible { outline: 3px solid #98baff; outline-offset: 2px; }
+      button { justify-self: start; padding: 0.7rem 1.1rem; border: 0; background: #2458c6; color: white; font-weight: 650; cursor: pointer; }
+      button:disabled { opacity: 0.65; cursor: wait; }
+      #feedback { min-height: 1.5em; margin: 1rem 0 0; }
+      #feedback[data-state="error"] { color: #b42318; }
+      #feedback[data-state="success"] { color: #167044; }
+      #greeting { min-height: 1.6em; margin: 0.5rem 0 0; color: #172033; font-size: 1.35rem; font-weight: 700; }
+    </style>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Say hello</h1>
+      <p>Enter a name and get a greeting from the local API.</p>
+      <form id="greeting-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="given-name" placeholder="World">
+        <button id="submit-button" type="submit">Get greeting</button>
+      </form>
+      <p id="feedback" role="status" aria-live="polite"></p>
+      <p id="greeting" aria-live="polite"></p>
+    </main>
+  </body>
+</html>
